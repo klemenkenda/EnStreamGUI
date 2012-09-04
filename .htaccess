@@ -1,0 +1,14 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^sl/index.html/(.*)$ /index.php?lang=sl&vfile=index&p=$1
+RewriteRule ^en/index.html/(.*)$ /index.php?lang=en&vfile=index&p=$1
+
+RewriteRule ^en/(.*)\.html&(.*)$ /index.php?lang=en&vfile=$1&$2
+RewriteRule ^en/(.*)\.html$ /index.php?lang=en&vfile=$1
+
+RewriteRule ^sl/(.*)\.html&(.*)$ /index.php?lang=sl&vfile=$1&$2
+RewriteRule ^sl/(.*)\.html$ /index.php?lang=sl&vfile=$1
+
+RewriteRule ^xml/(.*)/(.*)$ /index.php?id=9&cmd=$1&p=$2
+RewriteRule ^xml/(.*)$ /index.php?id=9&cmd=$1&%{QUERY_STRING}

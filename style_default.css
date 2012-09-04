@@ -1,0 +1,18 @@
+body { font-family:Arial; font-size: 80%; }
+
+h2 {
+  background: #fff0ee;
+	border-top: 1px solid #ffbb99;
+}
+
+h3 {
+  background: #eeeeff;
+	border-top: 1px solid #99bbff;
+}
+
+blockquote {
+  background: #eeeeee;
+	border: 1px solid #999999;
+	margin-left: 10px;
+	padding-left: 10px;
+}

@@ -1,0 +1,31 @@
+#main {width:980px; margin:0 auto;}
+
+#header {height:181px; background:url(template/images/sbd-background.jpg) no-repeat left top; position:relative;}
+#header, #content { font-size:0.8125em;}
+
+.col-1, .col-2, .col-3 { float:left;}
+
+#content .line { background:url(template/images/line.gif) 265px top repeat-y;}
+
+/*======= index.html =======*/
+#page1 #content .col-1 {width:252px; margin-right:39px;}
+#page1 #content .col-2 { width:635px;}
+#page2 #content .col-2 .col-1 { width:300px; margin-right:34px;}
+#page2 #content .col-2 .col-2 { width:300px;}
+
+/*======= index-1.html =======*/
+#page2 #content .col-1 {width:252px; margin-right:39px;}
+#page2 #content .col-2 { width:635px;}
+/* #page2 #content .col-2 .row-1 .col-1 { width:200px; margin-right:0;}
+#page2 #content .col-2 .row-1 .col-2 { width:434px;}
+#page2 #content .col-2 .row-1 .col-3 { width:238px;} */<
+#page2 #content .col-2 .row-2 .col-1 { width:291px; margin-right:54px;}
+#page2 #content .col-2 .row-2 .col-2 { width:289px;}
+#page2 #content .col-2 .line-ver { background:url(template/images/line.gif) 313px top repeat-y; width:100%;}
+#page2 #content .col-2 .row-3 .col-1 { width:275px; margin-right:60px;}
+#page2 #content .col-2 .row-3 .col-2 { width:297px;}
+
+/*=========================*/
+
+
+#footer {height:83px; border-top:1px solid #cdcdcd; background:#f8f8f8; font-size:.75em;}
