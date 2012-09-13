@@ -27,6 +27,8 @@ function pluginJSTranslations() {
 		$HTML .= "';\n";
 	}
 	
+	$HTML .= "translationSQL[\"MINER_URL\"] = '" . $miner["url"] . "';\n";
+	
 	$func =<<<EOJ
 	
 function getTranslation(name) {

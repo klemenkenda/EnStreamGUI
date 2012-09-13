@@ -166,6 +166,21 @@ function getRuleML() {
 	window.open(url);
 }
 
+function exportEPS() {
+  var queryStr = generateJSONRule();	
+	var eventStr = $("#eventname").val();
+	
+	var url = "/proxy.php?cmd=ruleml&p=event=" + escape(eventStr) + "|q=" + escape(queryStr); 
+  $.get(url, function(ruleml) {
+	  // on success
+		console.log(ruleml);
+		$.get(getTranslation("EPS_SERVICE_URL") + "?ruleml=" . escape(ruleml), function(data) {
+		  // on posting to EPS success
+			alert("Successfully sent to EPS!");
+		});
+	});
+}
+
 function getRDFData() {
   var queryStr = generateJSONRule();	
 	var url = "/proxy.php?cmd=rdf&p=json=" + escape(queryStr);
@@ -181,7 +196,7 @@ $("#key").live('change', function() {
 });	
 
 function selectDate(date) {
-  $("#ch-date").text(date);
+  $("#ch-date").val(date);
 }
 
 var eventMarker = new Array();
@@ -220,6 +235,24 @@ function loadedEvents(myData) {
 	$("#div-events").html(HTML);
 }
 
+function loadEvents() {  
+  $("#div-loadevents").dialog('open');
+};
+
+function sendEventsSuccess(data) {  
+	$.ajax({
+	  url: '/xml/get-events',
+		success: loadedEvents
+	});
+}
+
+function sendEvents() {
+  myData = $("#ta-loadevents").val();	
+	$.post('/xml/add-events', { p : myData }, sendEventsSuccess);		
+}
+
+
+
 $(function() {
   // initialize rule box
 	$.ajax({
@@ -235,5 +268,32 @@ $(function() {
 	$.ajax({
 	  url: '/xml/get-events',
 		success: loadedEvents
+	});
+	
+	$("#ch-date").datepicker({		
+	  showOn: "button",
+		// buttonImage: "images/calendar.gif",		
+		dateFormat: "yy-mm-dd"
+	});
+	
+	$("#sosid").change(function() {
+	  // set cookie
+		setCookie("sosid", $(this).val(), 100);		
+		
+		// reload page
+		location.reload();
+	});
+	
+	$("#div-loadevents").dialog({
+	  autoOpen: false,
+		width: 650,
+		minHeight: 300,
+		modal: true,
+			buttons: {
+				Ok: function() {
+				  sendEvents();
+					$( this ).dialog( "close" );
+				}
+			}
 	});
 });

@@ -413,4 +413,5 @@ include("plugin.js.inc.php");
 include("plugin.api.inc.php");
 include("plugin.tweeter.inc.php");
 include("plugin.cyc.inc.php");
+include("plugin.sos.inc.php");
 ?>

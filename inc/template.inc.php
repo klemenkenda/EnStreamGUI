@@ -67,6 +67,8 @@ function handlePlugins() {
 	
 	handlePermanentPlugin("keywords", "Keywords");
 	handlePermanentPlugin("description", "Description");
+	handlePermanentPlugin("sosselect", "SOSSelect");
+	
   /*
 	handlePermanentPlugin("menu", "Menu");
 	handlePermanentPlugin("menutop", "MenuTop");

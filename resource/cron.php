@@ -23,7 +23,7 @@
   // 1. SELECT PROP-OFFERING BIND with EARLIEST DATE
 	$SQL = "SELECT * FROM sos_offering, sos_index, sos_properties, sos_offeringprop WHERE " .
 	       "  sos_offering.id = so_offeringid AND sos_properties.id = so_propertyid AND " .
-				 "  sos_index.id = sf_sosid ORDER BY so_dateupdated LIMIT 1";
+				 "  sos_index.id = sf_sosid AND so_active = 1 ORDER BY so_dateupdated LIMIT 1";
 	$result = mysql_query($SQL);
 	$offering = mysql_fetch_array($result);
 
@@ -58,10 +58,11 @@
 		$SQL_update = "UPDATE sos_offeringprop SET so_dateupdated = '$endDateStr' WHERE id = " . $offering["id"];
 		$result_update = mysql_query($SQL_update);
 		echo "; " . mysql_error();
-			
+					
 	  // 4. FILL MEASUREMENTS TO ENSTREAM
 		// send via post
-		$xml = getURLPost("http://localhost:9988/sos-om-update", $response);
+		$miner_url = $miner["base_url"] . ":" . ($miner["start_port"] + $offering["sf_sosid"]) . "/";
+		$xml = getURLPost($miner_url . "sos-om-update", $response);
 		if ($xml == -1) echo "Error connecting to EnStreaM.";
 		  else echo $xml;
 	} else {

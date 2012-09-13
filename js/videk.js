@@ -281,7 +281,7 @@ function filterByKeyword(keywordName) {
 
 function showChart() {
   var sid = $("#ch-sensor option:selected").val();
-	var sd = $("#ch-date").text();
+	var sd = $("#ch-date").val();
 	var type = $("#ch-type option:selected").val();
 	var timespan = $("#ch-timespan option:selected").val();
 	
@@ -313,13 +313,13 @@ var debug = gup('debug');
 $(function() {
   nowDate = new Date();
   eventTime = mysqlDateStr(nowDate) + " 00:00:00";
-  $("#ch-date").text(mysqlDateStr(nowDate));
+  $("#ch-date").val(mysqlDateStr(nowDate));
 	
 	// TODO: automatically set center of the map and zoom according to the clusters	
 	// initialize Google maps
-	var latlng = new google.maps.LatLng(16.2, -61.5);
+	var latlng = new google.maps.LatLng(20, 0);
 	var myOptions = {
-	  zoom: 9,
+	  zoom: 2,
 		center: latlng,
 	  mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU, position: google.maps.ControlPosition.RIGHT_BOTTOM},
 		mapTypeId: google.maps.MapTypeId.HYBRID

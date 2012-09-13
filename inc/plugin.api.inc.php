@@ -92,7 +92,14 @@ function pluginAPIGET() {
 			} else {
 			  $HTML = apiError("Wrong parameter count!");
 			} 
-			break;						
+			break;
+		case "add-events":
+		  if ($pars == 1) {
+ 			  $HTML = pluginAddEvents($par[0]);
+			} else {
+			  $HTML = apiError("Wrong parameter count!");
+			} 
+		  break;
 		default:
 		  $HTML = apiError("Command not correct!");
 		  break;

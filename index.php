@@ -11,6 +11,9 @@
 error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 
+// get request variables
+import_request_variables("gPC");
+
 // includes -----------------------------------------------------------
 include("inc/config.inc.php");
 include("inc/sql.inc.php");
@@ -18,7 +21,6 @@ include("inc/template.inc.php");
 include("inc/plugins.inc.php");
 
 // main program -------------------------------------------------------
-import_request_variables("gPC");
 
 // funny bug!!!
 $lang = $_GET["lang"];

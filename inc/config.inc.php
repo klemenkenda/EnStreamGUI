@@ -2,9 +2,11 @@
 //---------------------------------------------------------------------
 // FILE: config.inc.php
 // AUTHOR: Klemen Kenda
-// DESCRIPTION: SN browser config file
+// DESCRIPTION: EnStreamM GUI config file
 // DATE: 16/12/2011
 // HISTORY:
+//  2012/08/31: Added resource module config, EPS and SR config, SOS
+//              config
 //---------------------------------------------------------------------
 
 // mysql config -------------------------------------------------------
@@ -26,7 +28,11 @@ $webmaster_mail = "klemen.kenda@ijs.si";
 $filesystem_root = "C:\Users\Klemen\Programs\wamp\www\\";
 
 // miner config -------------------------------------------------------
-$miner["url"] = "http://localhost:9988/";
+$miner["base_url"] = "http://localhost";
+$miner["start_port"] = 9987;
+if (!isset($sosid)) $sosid = 1;
+$miner["url"] = $miner["base_url"] . ":" . ($miner["start_port"] + $sosid) . "/";
+// echo $miner["url"];
 $miner["stream_timeout"] = 20;
 $miner["socket_timeout"] = 10;
 
@@ -35,10 +41,16 @@ $tweet_cfg["node_repeat"] = 4;
 $tweet_cfg["statement_repeat"] = 3;
 $tweet_cfg["num_tweets_history"] = 20;
 
-// tweet config -------------------------------------------------------
+// resource module config ---------------------------------------------
 $resource_module["user"] = "guest";
 $resource_module["pass"] = "guest";
 $resource_module["url"] = "http://giv-wfs.uni-muenster.de:8080/jcr/repository/y2review/";
+
+// EPS config ---------------------------------------------------------
+$eps_endpoint_url = "";
+
+// StreamReasoner config ----------------------------------------------
+$sr_endpoint_url = "";
 
 // SOS config ---------------------------------------------------------
 $sos_interval_secs = 14 * 24 * 60 * 60; // 14 days

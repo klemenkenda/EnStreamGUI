@@ -704,6 +704,18 @@ function pluginSensorType($stid_int = -1) {
 	$XML = $buffer;	
   
 	return $XML;		 
+}
 
+include("/resource/xml.inc.php");
 
+function pluginAddEvents($data) {
+  global $miner;
+
+	// miner/get-clusters
+	$url = $miner["url"] . "load-events";
+	
+	$xml = getURLPost($url, $data);
+	
+	if ($xml == -1) return "<error>Error connecting to EnStreaM.</error>";
+	  return $xml;
 }
