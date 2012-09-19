@@ -29,8 +29,8 @@ $filesystem_root = "C:\Users\Klemen\Programs\wamp\www\\";
 
 // miner config -------------------------------------------------------
 $miner["base_url"] = "http://localhost";
-$miner["start_port"] = 9987;
-if (!isset($sosid)) $sosid = 1;
+$miner["start_port"] = 9980;
+if (!isset($sosid)) $sosid = 4;
 $miner["url"] = $miner["base_url"] . ":" . ($miner["start_port"] + $sosid) . "/";
 // echo $miner["url"];
 $miner["stream_timeout"] = 20;
@@ -53,6 +53,6 @@ $eps_endpoint_url = "";
 $sr_endpoint_url = "";
 
 // SOS config ---------------------------------------------------------
-$sos_interval_secs = 14 * 24 * 60 * 60; // 14 days
+$sos_interval_secs = 180 * 24 * 60 * 60; // 180 days
 
 ?>

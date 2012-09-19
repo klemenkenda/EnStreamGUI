@@ -75,6 +75,8 @@ function pluginPassthruXML($mycmdid = -1, $par1 = "", $par2 = "", $par3 = "", $p
 	
 	$url = $miner["url"] . $command[$cmdid];
 	
+	// echo $url;
+	
   $old = ini_set('default_socket_timeout', $miner["socket_timeout"]);
 	ini_set('error_reporting', NULL);
 	
@@ -130,6 +132,8 @@ function aggregateXML2chartXML($buffer) {
 	foreach ($aggregates->children() as $aggregate) {
 	  $category[$i] = $aggregate["timestamp"];
 		$value[$i] = $aggregate["value"];
+		
+		if ($i % 3 != 0) $category[$i] = "";
 		
 		if ($i == 0) {
 		  $rmin = floatval($aggregate["value"]);

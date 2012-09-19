@@ -92,14 +92,14 @@
 	function parseSOSServices() {
 	  global $sos_command;
 		
-		$SQL = "SELECT * FROM sos_index LIMIT 5";
+		$SQL = "SELECT * FROM sos_index WHERE so_active = 1";
 		$result = mysql_query($SQL);
 		
 		while ($line = mysql_fetch_array($result)) {
 		  $response = getURLPost($line["so_url"], $sos_command['getCapabilities']);			
 		
 			echo "<b>" . $line["so_name"] . ":</b> ";
-		
+					
   		// 4. CHECK OFFERINGS and PROPERTIES
   		// due to possible very large files we use simple parsing of text
  		  $startOP = getXMLEnd($response, '<ows:Parameter name="observedProperty">');

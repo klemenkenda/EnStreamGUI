@@ -53,8 +53,12 @@
 	// 3. VALIDATE RESPONSE
 	// simple hack - can we find <om:Observation>
 	if (getXMLStart($response, "<om:Observation") != -1) {
-	  // validation OK - update offering data
+	  // validation OK - update offering data		
 		echo "SOS response OK: updating DB";
+		// sent end date one day back
+		$myEndDate = date("Y-m-d", time() - 24 * 60 * 60);
+		if ($endDateStr > $myEndDate) $endDateStr = $myEndDate;
+		
 		$SQL_update = "UPDATE sos_offeringprop SET so_dateupdated = '$endDateStr' WHERE id = " . $offering["id"];
 		$result_update = mysql_query($SQL_update);
 		echo "; " . mysql_error();

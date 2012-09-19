@@ -67,8 +67,8 @@
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, count($fields));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
-		curl_setopt($ch, CURLOPT_TIMEOUT, 15); //timeout in seconds
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); 
+		curl_setopt($ch, CURLOPT_TIMEOUT, 60); //timeout in seconds
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);	
 		
 		//execute post

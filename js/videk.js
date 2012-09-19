@@ -105,6 +105,10 @@ function loadedClusters(data) {
 	$("#div-select").html(HTML);
 }
 
+function selectSensor(id) {
+  $("#ch-sensor").val(id);
+}
+
 // current state
 function loadedData(data) {
 	// check errors
@@ -180,7 +184,8 @@ function loadedData(data) {
 		  tempHTML += "<tr><td>(" + sensor.attr("id")  + ") " + getTranslation(keyname) + ": </td>";
 			// tempHTML += "<td>" + sensor.attr("lastmeasurement") + convertUnitHTML(sensor.attr("unitofmeasurement")) + "</td>";
 				
-			if ((toDayStr != "NaN-NaN-NaN") && (keyname != "FTR_CAMERA")) tempHTML += "<td><a href=\"" + toDayOpenFuncStr + "\">" + getTranslation("DAN") + "</a> | <a href=\"" + toWeekOpenFuncStr + "\">" + getTranslation("TEDEN") + "</a> | <a href=\"" + toMonthOpenFuncStr + "\">" + getTranslation("MESEC") + "</a> | <a href=\"" + toYearOpenFuncStr + "\">" + getTranslation("LETO") + "</a></td>";
+			// if ((toDayStr != "NaN-NaN-NaN") && (keyname != "FTR_CAMERA")) tempHTML += "<td><a href=\"" + toDayOpenFuncStr + "\">" + getTranslation("DAN") + "</a> | <a href=\"" + toWeekOpenFuncStr + "\">" + getTranslation("TEDEN") + "</a> | <a href=\"" + toMonthOpenFuncStr + "\">" + getTranslation("MESEC") + "</a> | <a href=\"" + toYearOpenFuncStr + "\">" + getTranslation("LETO") + "</a></td>";
+			tempHTML += "<td><a href=\"javascript:selectSensor(" + sensor.attr("id") + ")\">" + getTranslation("SELECT_SENSOR") + "</a></td>";
 			if (keyname == "FTR_CAMERA") camera = 1;
 			tempHTML += "</tr>";
 			
@@ -285,7 +290,7 @@ function showChart() {
 	var type = $("#ch-type option:selected").val();
 	var timespan = $("#ch-timespan option:selected").val();
 	
-	myUrl = "http://localhost/xml/get-aggregates?p=" + sid + ":" + sd + ":" + type + ":" + timespan;
+	myUrl = "/xml/get-aggregates?p=" + sid + ":" + sd + ":" + type + ":" + timespan;
 	//alert(url),
 		
 	$.ajax({
